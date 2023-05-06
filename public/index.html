@@ -9,21 +9,27 @@
 
     <!-- Your interface markup goes here -->
     <!-- For interface examples, look in the `/examples/` directory in the root of your starter code repo. -->
+    <div>
+        <button onclick="helpRPS()">RPS Rules</buton>
+        <button onclick="helpRPSLS()">RPSLS Rules</buton>
+    </div>
+          
     <p>
         Test
     </p>
+
     <button onclick="getShot(true)">Get a shot</button>
     <h3 id="output">Placeholder</h3>
 
     <label for="game">Game: </label>
-    <input type="radio" name="game" value="1">RPS</input>
-    <input type="radio" name="game" value="0">RPSLS</input>
+    <input type="radio" name="game" value="RPS">RPS</input>
+    <input type="radio" name="game" value="RPSLS">RPSLS</input>
 
     <br><br>
 
     <label for="opponent">Opponent: </label>
-    <input type="radio" name="opponent" value="1">Yes</input>
-    <input type="radio" name="opponent" value="0">No</input>
+    <input type="radio" name="opponent" value="YES">Yes</input>
+    <input type="radio" name="opponent" value="NO">No</input>
 
     <br><br><br>
     <button onclick="play()">Submit</buton>

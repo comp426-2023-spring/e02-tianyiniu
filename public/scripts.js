@@ -2,6 +2,25 @@
 // check out the coin-server example from a previous COMP 426 semester.
 // https://github.com/jdmar3/coinserver
 
+const rps_rules_text = `Rules for Rock Paper Scissors:
+
+  - Scissors CUTS Paper
+  - Paper COVERS Rock
+  - Rock CRUSHES Scissors`
+
+const rpsls_rules_text = `Rules for the Lizard-Spock Expansion of Rock Paper Scissors:
+
+  - Scissors CUTS Paper
+  - Paper COVERS Rock
+  - Rock SMOOSHES Lizard
+  - Lizard POISONS Spock
+  - Spock SMASHES Scissors
+  - Scissors DECAPITATES Lizard
+  - Lizard EATS Paper
+  - Paper DISPROVES Spock
+  - Spock VAPORIZES Rock
+  - Rock CRUSHES Scissors`
+
 function rpsOpponent(shot) {
     const url = "/app/rps/play/" + shot
     return response = fetch(url)
@@ -71,11 +90,11 @@ function playOpponent(isRPS, shot) {
 }
 
 function helpRPS() {
-    console.log("RPS help");
+    alert(rps_rules_text);
 }
 
 function helpRPSLS() {
-    console.log("RPSLS help");
+    alert(rpsls_rules_text);
 }
 
 function reset() {
@@ -105,7 +124,7 @@ function play() {
         break;
         }
     }
-    console.log(game)
+    const isRPS = game=="RPS" ? true : false; 
 
     for (var i = 0; i < opponentSelection.length; i++) {
         if (opponentSelection[i].checked) {
@@ -113,5 +132,6 @@ function play() {
             break;
         }
     }
-    console.log(opponent)
+    const hasOpponent = opponent=="YES" ? true : false;
+
 }
