@@ -79,14 +79,21 @@ function helpRPSLS() {
 }
 
 function reset() {
-    console.log("reset");
+    var ele = document.getElementsByName("game");
+    for(var i=0;i<ele.length;i++)
+        ele[i].checked = false;
 }
 
-const radialBox = document.querySelector(".radial-box");
-const options = radialBox.querySelectorAll("input[type='radio']");
+function play() {
+    var gameRadios = document.getElementsByName("game");
+    for (var i = 0; i < gameRadios.length; i++) {
+    if (gameRadios[i].checked) {
+        // do whatever you want with the checked radio
+        const selectedValue = gameRadios[i].value;
+        console.log(selectedValue)
 
-radialBox.addEventListener("click", function(event) {
-  const selectedOption = radialBox.querySelector("input[type='radio']:checked");
-  console.log(selectedOption.value);
-});
-
+        // only one radio can be logically checked, don't check the rest
+        break;
+        }
+    }
+}
