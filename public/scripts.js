@@ -2,8 +2,9 @@
 // check out the coin-server example from a previous COMP 426 semester.
 // https://github.com/jdmar3/coinserver
 
-function test() {
-    return response = fetch("/app/rpsls/play/paper")
+function rpslsOpponent(shot) {
+    const url = "/app/rpsls/play/" + shot
+    return response = fetch(url)
         .then(response => response.json())
         .then(data => {
             return data;
@@ -12,7 +13,7 @@ function test() {
 }
 
 function fetchTest() {
-    test().then(someVal => {
+    rpslsOpponent("rock").then(someVal => {
         console.log("Shit");
         console.log(someVal);
     })
