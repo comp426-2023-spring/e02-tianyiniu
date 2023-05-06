@@ -3,6 +3,8 @@
 // https://nodejs.org/docs/latest-v18.x/api/module.html#modulecreaterequirefilename
 
 import { createRequire } from 'node:module';
+import { rps, rpsls } from "./lib/rpsls.js";
+
 const require = createRequire(import.meta.url);
 
 // The above two lines allow us to use ES methods and CJS methods for loading
@@ -122,7 +124,7 @@ process.on('SIGINT', () => {
 
 // Log server stop to file
         fs.appendFileSync(path.join(logpath, 'server.log'), stoppedlog)
-        
+
 // Debug echo stop log entry to STDOUT
         if (args.debug) {
             console.info('\n' + stoppedlog)
