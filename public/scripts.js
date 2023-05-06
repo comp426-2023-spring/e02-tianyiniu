@@ -79,21 +79,39 @@ function helpRPSLS() {
 }
 
 function reset() {
-    var ele = document.getElementsByName("game");
-    for(var i=0;i<ele.length;i++)
-        ele[i].checked = false;
+    // Reset all selections and clear fields
+    var gameSelection = document.getElementsByName("game");
+    var opponentSelection = document.getElementsByName("opponent");
+
+    for(var i=0; i<gameSelection.length; i++) {
+        gameSelection[i].checked = false;
+    }
+
+    for (var i=0; i<opponentSelection.length; i++) {
+        opponentSelection[i].checked = false;
+    }
 }
 
 function play() {
-    var gameRadios = document.getElementsByName("game");
-    for (var i = 0; i < gameRadios.length; i++) {
-    if (gameRadios[i].checked) {
-        // do whatever you want with the checked radio
-        const selectedValue = gameRadios[i].value;
-        console.log(selectedValue)
+    var gameSelection = document.getElementsByName("game");
+    var opponentSelection = document.getElementsByName("opponent");
 
-        // only one radio can be logically checked, don't check the rest
+    var game = null;
+    var opponent = null;
+    
+    for (var i = 0; i < gameSelection.length; i++) {
+    if (gameSelection[i].checked) {
+        game = gameSelection[i].value;
         break;
         }
     }
+    console.log(game)
+
+    for (var i = 0; i < opponentSelection.length; i++) {
+        if (opponentSelection[i].checked) {
+            opponent = opponentSelection[i].value;
+            break;
+        }
+    }
+    console.log(opponent)
 }
