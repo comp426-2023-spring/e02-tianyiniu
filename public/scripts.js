@@ -70,6 +70,23 @@ function playOpponent(isRPS, shot) {
     })
 }
 
+function helpRPS() {
+    console.log("RPS help");
+}
+
+function helpRPSLS() {
+    console.log("RPSLS help");
+}
+
 function reset() {
     console.log("reset");
 }
+
+const radialBox = document.querySelector(".radial-box");
+const options = radialBox.querySelectorAll("input[type='radio']");
+
+radialBox.addEventListener("click", function(event) {
+  const selectedOption = radialBox.querySelector("input[type='radio']:checked");
+  console.log(selectedOption.value);
+});
+
