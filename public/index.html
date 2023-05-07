@@ -1,5 +1,7 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
         <title>RPS(LS)</title>
         <!-- Link to your script file(s) and CSS in here somewhere -->
         <link rel="stylesheet" type="text/css" href="./styles.css">
@@ -11,36 +13,41 @@
         <h1 id="gameTitle">Rock Paper Scissors Lizard Spock</h1>
 
         <div>
-            <button onclick="helpRPS()">RPS Rules</buton>
-            <button onclick="helpRPSLS()">RPSLS Rules</buton>
+            <button class="button" onclick="helpRPS()">RPS Rules</button>
+            <button class="button" onclick="helpRPSLS()">RPSLS Rules</button>
         </div>
 
         
         <div>  
             <h2>Random Draw</h2>
-            <label for="noOpponentGame">Select game: </label>
-            <input type="radio" name="noOpponentGame" value="RPS" checked>RPS</input>
-            <input type="radio" name="noOpponentGame" value="RPSLS">RPSLS</input>
+            <label>Select game: </label>
+            <input type="radio" name="noOpponentGame" value="RPS" checked>RPS
+            <input type="radio" name="noOpponentGame" value="RPSLS">RPSLS
             <br><br>
-            <button onclick="getShot()">Get a shot</button>
+            <button class="button" onclick="getShot()">Get shot</button>
             <br><br>
             <input type="text" id="draw" name="draw" value="" readonly>
         </div>
         
         <div>
             <h2>Play Computer</h2>
-            <label for="game">Select game: </label>
-            <input type="radio" name="game" value="RPS" onchange="setLS()" checked>RPS</input>
-            <input type="radio" name="game" value="RPSLS" onchange="setLS()">RPSLS</input>
+            <label>Select game: </label>
+            <input type="radio" name="game" value="RPS" onchange="setLS()" checked>RPS
+            <input type="radio" name="game" value="RPSLS" onchange="setLS()">RPSLS
 
             <br><br>
 
-            <label for="selectedShot">Select Shot: </label>
-            <input type="radio" id="rockOption" name="selectedShot" value="rock" checked>Rock</input>
-            <input type="radio" id="paperOption" name="selectedShot" value="paper">Paper</input>
-            <input type="radio" id="scissorsOption" name="selectedShot" value="scissors">Scissors</input>
-            <input type="radio" id="lizardOption" name="selectedShot" value="lizard">Lizard</input>
-            <input type="radio" id="spockOption" name="selectedShot" value="spock">Spock</input>
+            <label>Select Shot:</label>
+            <input type="radio" id="rockOption" name="selectedShot" value="rock" checked>
+            <label for="rockOption">Rock</label>
+            <input type="radio" id="paperOption" name="selectedShot" value="paper">
+            <label for="paperOption">Paper</label>
+            <input type="radio" id="scissorsOption" name="selectedShot" value="scissors">
+            <label for="scissorsOption">Scissors</label>
+            <input type="radio" id="lizardOption" name="selectedShot" value="lizard">
+            <label for="lizardOption">Lizard</label>
+            <input type="radio" id="spockOption" name="selectedShot" value="spock">
+            <label for="spockOption">Spock</label>
 
             <br>
             <h4>Result: </h4>
@@ -53,12 +60,11 @@
             <input type="text" id="computerShot" name="computerShot" value="" readonly>
 
             <br><br>
-            <button onclick="play()">Play!</button>
+            <button class="button" onclick="play()">GO!</button>
             <br><br>
+        </div>
 
-        <div></div>
-
-        <button class="button-15" onclick="reset()">Reset</buton>
+        <button class="button" onclick="reset()">Reset</button>
         
     </body>
 </html>
