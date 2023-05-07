@@ -69,6 +69,11 @@ function rpslsNoOpponent() {
         .catch(error => console.error(error));
 }
 
+function disableLS() {
+    const lizardOption = document.getElementById("lizardOption");
+    lizardOption.disabled = true;
+}
+
 function getShot() {
     var gameSelection = document.getElementsByName("noOpponentGame");
     var game = null;
@@ -160,4 +165,6 @@ function play() {
             document.getElementById("computerShot").value = computerShot;
         });
     }
+
+    disableLS();
 }
