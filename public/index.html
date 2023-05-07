@@ -1,14 +1,14 @@
 <html>
     <head>
-        <title>Rock</title>
+        <title>RPS(LS)</title>
         <!-- Link to your script file(s) and CSS in here somewhere -->
         <link rel="stylesheet" type="text/css" href="./styles.css">
         <script src="./scripts.js"></script>
     </head>
-    <body id="body">
+    <body id="body" onload="setLS()">
     <!-- Your interface markup goes here -->
     <!-- For interface examples, look in the `/examples/` directory in the root of your starter code repo. -->
-        <h1 id="gameTitle">Rock Paper Sissors Lizard Spock</h1>
+        <h1 id="gameTitle">Rock Paper Scissors Lizard Spock</h1>
 
         <div>
             <button onclick="helpRPS()">RPS Rules</buton>
@@ -30,15 +30,15 @@
         <div>
             <h2>Play Computer</h2>
             <label for="game">Select game: </label>
-            <input type="radio" name="game" value="RPS" checked>RPS</input>
-            <input type="radio" name="game" value="RPSLS">RPSLS</input>
+            <input type="radio" name="game" value="RPS" onchange="setLS()" checked>RPS</input>
+            <input type="radio" name="game" value="RPSLS" onchange="setLS()">RPSLS</input>
 
             <br><br>
 
             <label for="selectedShot">Select Shot: </label>
-            <input type="radio" name="selectedShot" value="rock">Rock</input>
-            <input type="radio" name="selectedShot" value="paper">Paper</input>
-            <input type="radio" name="selectedShot" value="scissors">Scissors</input>
+            <input type="radio" id="rockOption" name="selectedShot" value="rock" checked>Rock</input>
+            <input type="radio" id="paperOption" name="selectedShot" value="paper">Paper</input>
+            <input type="radio" id="scissorsOption" name="selectedShot" value="scissors">Scissors</input>
             <input type="radio" id="lizardOption" name="selectedShot" value="lizard">Lizard</input>
             <input type="radio" id="spockOption" name="selectedShot" value="spock">Spock</input>
 
@@ -54,10 +54,11 @@
 
             <br><br>
             <button onclick="play()">Play!</button>
+            <br><br>
 
         <div></div>
 
-        <button onclick="reset()">Reset</buton>
+        <button class="button-15" onclick="reset()">Reset</buton>
         
     </body>
 </html>

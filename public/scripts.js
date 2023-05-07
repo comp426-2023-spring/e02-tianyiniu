@@ -69,11 +69,6 @@ function rpslsNoOpponent() {
         .catch(error => console.error(error));
 }
 
-function disableLS() {
-    const lizardOption = document.getElementById("lizardOption");
-    lizardOption.disabled = true;
-}
-
 function getShot() {
     var gameSelection = document.getElementsByName("noOpponentGame");
     var game = null;
@@ -119,6 +114,7 @@ function reset() {
     document.getElementById("gameResult").value = null;
     document.getElementById("playerShot").value = null;
     document.getElementById("computerShot").value = null;
+    location.reload();
 }
 
 function play() {
@@ -154,6 +150,7 @@ function play() {
             document.getElementById("gameResult").value = result;
             document.getElementById("playerShot").value = playerShot;
             document.getElementById("computerShot").value = computerShot;
+            setResultBackground(result);
         });
     } else {
         rpslsOpponent(shot).then(someVal => {
@@ -163,8 +160,42 @@ function play() {
             document.getElementById("gameResult").value = result;
             document.getElementById("playerShot").value = playerShot;
             document.getElementById("computerShot").value = computerShot;
+            setResultBackground(result);
         });
     }
+}
 
-    disableLS();
+function setResultBackground(result) {
+    if (result == "win") {
+        document.getElementById("gameResult").style.backgroundColor = "rgba(153, 255, 153, 0.5)";
+    } else if (result == "lose") {
+        document.getElementById("gameResult").style.backgroundColor = "rgba(255, 51, 0, 0.5)";
+    } else if (result == "tie") {
+        document.getElementById("gameResult").style.backgroundColor = "rgba(139, 207, 196, 0.5)";
+    }
+}
+
+function setLS() {
+    // Enable/Disable lizard and spock radios 
+    var gameSelection = document.getElementsByName("game");
+    var game = null;
+    
+    for (var i = 0; i < gameSelection.length; i++) {
+    if (gameSelection[i].checked) {
+        game = gameSelection[i].value;
+        break;
+        }
+    }
+    const isRPS = game=="RPS" ? true : false; 
+
+    const lizardOption = document.getElementById("lizardOption");
+    const spockOption = document.getElementById("spockOption");
+    const rockOption = document.getElementById("rockOption");
+    lizardOption.disabled = isRPS;
+    spockOption.disabled = isRPS;
+    if (lizardOption.disabled) {
+        lizardOption.checked = false;
+        spockOption.checked = false;
+        rockOption.checked = true;
+    }
 }
