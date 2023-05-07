@@ -61,15 +61,27 @@ function rpslsNoOpponent() {
         .catch(error => console.error(error));
 }
 
-function getShot(isRPS) {
+function getShot() {
+    var gameSelection = document.getElementsByName("noOpponentGame");
+    var game = null;
+    
+    for (var i = 0; i < gameSelection.length; i++) {
+    if (gameSelection[i].checked) {
+        game = gameSelection[i].value;
+        break;
+        }
+    }
+    const isRPS = game=="RPS" ? true : false; 
+
     if (isRPS) {
-        rpsNoOpponent().then(someVal => {
-            console.log(someVal.player);
-            document.getElementById("output").innerHTML = someVal.player;
+        rpsNoOpponent().then(shot => {
+            console.log(shot.player);
+            document.getElementById("draw").value = shot.player;
         })
     } else {
-        rpslsNoOpponent().then(someVal => {
-            console.log(someVal.player);
+        rpslsNoOpponent().then(shot => {
+            console.log(shot.player);
+            document.getElementById("draw").value = shot.player;
         })
     }
 }
@@ -101,6 +113,7 @@ function reset() {
     // Reset all selections and clear fields
     var gameSelection = document.getElementsByName("game");
     var opponentSelection = document.getElementsByName("opponent");
+    var noOpponentGameSelection = document.getElementsByName("noOpponentGame");
 
     for(var i=0; i<gameSelection.length; i++) {
         gameSelection[i].checked = false;
@@ -108,6 +121,10 @@ function reset() {
 
     for (var i=0; i<opponentSelection.length; i++) {
         opponentSelection[i].checked = false;
+    }
+
+    for (var i=0; i<noOpponentGameSelection.length; i++) {
+        noOpponentGameSelection[i].checked = false;
     }
 }
 
