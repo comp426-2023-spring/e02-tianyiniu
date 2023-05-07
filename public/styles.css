@@ -1,7 +1,7 @@
 body {
 }
 
-input[type="text"] {
+#draw {
     font-size: 24px;
     background-color: rgba(184, 150, 64, 0.2);
 }

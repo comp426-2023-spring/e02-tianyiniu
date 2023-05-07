@@ -8,7 +8,7 @@ const rps_rules_text = `Rules for Rock Paper Scissors:
   - Paper COVERS Rock
   - Rock CRUSHES Scissors`
 
-const rpsls_rules_text = `Rules for the Lizard-Spock Expansion of Rock Paper Scissors:
+const rpsls_rules_text = `Rules for Rock Paper Scissors Lizard Spock:
 
   - Scissors CUTS Paper
   - Paper COVERS Rock
@@ -20,6 +20,14 @@ const rpsls_rules_text = `Rules for the Lizard-Spock Expansion of Rock Paper Sci
   - Paper DISPROVES Spock
   - Spock VAPORIZES Rock
   - Rock CRUSHES Scissors`
+
+function helpRPS() {
+    alert(rps_rules_text);
+}
+
+function helpRPSLS() {
+    alert(rpsls_rules_text);
+}
 
 function rpsOpponent(shot) {
     const url = "/app/rps/play/" + shot
@@ -75,37 +83,27 @@ function getShot() {
 
     if (isRPS) {
         rpsNoOpponent().then(shot => {
-            console.log("NO OPP: RPS");
             document.getElementById("draw").value = shot.player;
         })
     } else {
         rpslsNoOpponent().then(shot => {
-            console.log("NO OPP: RPSLS");
             document.getElementById("draw").value = shot.player;
         })
     }
 }
 
-function helpRPS() {
-    alert(rps_rules_text);
-}
-
-function helpRPSLS() {
-    alert(rpsls_rules_text);
-}
-
 function reset() {
     // Reset all selections and clear fields
     var gameSelection = document.getElementsByName("game");
-    var opponentSelection = document.getElementsByName("opponent");
+    var drawSelection = document.getElementsByName("selectedShot");
     var noOpponentGameSelection = document.getElementsByName("noOpponentGame");
 
     for(var i=0; i<gameSelection.length; i++) {
         gameSelection[i].checked = false;
     }
 
-    for (var i=0; i<opponentSelection.length; i++) {
-        opponentSelection[i].checked = false;
+    for (var i=0; i<drawSelection.length; i++) {
+        drawSelection[i].checked = false;
     }
 
     for (var i=0; i<noOpponentGameSelection.length; i++) {
@@ -113,29 +111,17 @@ function reset() {
     }
 
     document.getElementById("draw").value = null;
-}
-
-function playOpponent(isRPS, shot) {
-    rpslsOpponent("rock").then(someVal => {
-        console.log("With Opponent");
-        console.log(someVal.player);
-        console.log(someVal.opponent);
-        console.log(someVal.result);
-    });
-    rpslsOpponent("rock").then(someVal => {
-        console.log("With Opponent");
-        console.log(someVal.player);
-        console.log(someVal.opponent);
-        console.log(someVal.result);
-    })
+    document.getElementById("gameResult").value = null;
+    document.getElementById("playerShot").value = null;
+    document.getElementById("computerShot").value = null;
 }
 
 function play() {
     var gameSelection = document.getElementsByName("game");
-    var opponentSelection = document.getElementsByName("opponent");
+    var drawSelection = document.getElementsByName("selectedShot");
 
     var game = null;
-    var opponent = null;
+    var shot = null;
     
     for (var i = 0; i < gameSelection.length; i++) {
     if (gameSelection[i].checked) {
@@ -145,12 +131,33 @@ function play() {
     }
     const isRPS = game=="RPS" ? true : false; 
 
-    for (var i = 0; i < opponentSelection.length; i++) {
-        if (opponentSelection[i].checked) {
-            opponent = opponentSelection[i].value;
+    for (var i = 0; i < drawSelection.length; i++) {
+        if (drawSelection[i].checked) {
+            shot = drawSelection[i].value;
             break;
         }
     }
-    const hasOpponent = opponent=="YES" ? true : false;
 
+    var result = null;
+    var playerShot = null;
+    var computerShot = null;
+    if (isRPS) {
+        rpsOpponent(shot).then(someVal => {
+            result = someVal.result;
+            playerShot = someVal.player;
+            computerShot = someVal.opponent;
+            document.getElementById("gameResult").value = result;
+            document.getElementById("playerShot").value = playerShot;
+            document.getElementById("computerShot").value = computerShot;
+        });
+    } else {
+        rpslsOpponent(shot).then(someVal => {
+            result = someVal.result;
+            playerShot = someVal.player;
+            computerShot = someVal.opponent;
+            document.getElementById("gameResult").value = result;
+            document.getElementById("playerShot").value = playerShot;
+            document.getElementById("computerShot").value = computerShot;
+        });
+    }
 }
