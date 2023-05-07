@@ -75,30 +75,15 @@ function getShot() {
 
     if (isRPS) {
         rpsNoOpponent().then(shot => {
-            console.log(shot.player);
+            console.log("NO OPP: RPS");
             document.getElementById("draw").value = shot.player;
         })
     } else {
         rpslsNoOpponent().then(shot => {
-            console.log(shot.player);
+            console.log("NO OPP: RPSLS");
             document.getElementById("draw").value = shot.player;
         })
     }
-}
-
-function playOpponent(isRPS, shot) {
-    rpslsOpponent("rock").then(someVal => {
-        console.log("With Opponent");
-        console.log(someVal.player);
-        console.log(someVal.opponent);
-        console.log(someVal.result);
-    });
-    rpslsOpponent("rock").then(someVal => {
-        console.log("With Opponent");
-        console.log(someVal.player);
-        console.log(someVal.opponent);
-        console.log(someVal.result);
-    })
 }
 
 function helpRPS() {
@@ -126,6 +111,23 @@ function reset() {
     for (var i=0; i<noOpponentGameSelection.length; i++) {
         noOpponentGameSelection[i].checked = false;
     }
+
+    document.getElementById("draw").value = null;
+}
+
+function playOpponent(isRPS, shot) {
+    rpslsOpponent("rock").then(someVal => {
+        console.log("With Opponent");
+        console.log(someVal.player);
+        console.log(someVal.opponent);
+        console.log(someVal.result);
+    });
+    rpslsOpponent("rock").then(someVal => {
+        console.log("With Opponent");
+        console.log(someVal.player);
+        console.log(someVal.opponent);
+        console.log(someVal.result);
+    })
 }
 
 function play() {

@@ -1,8 +1,7 @@
 body {
 }
 
-h1 {
-}
-
-p {
+input[type="text"] {
+    font-size: 24px;
+    background-color: rgba(184, 150, 64, 0.2);
 }
