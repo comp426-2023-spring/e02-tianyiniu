@@ -11,24 +11,20 @@
     <!-- Your interface markup goes here -->
     <!-- For interface examples, look in the `/examples/` directory in the root of your starter code repo. -->
         <h1 id="gameTitle">Rock Paper Scissors Lizard Spock</h1>
-
         <div>
-            <button class="button" onclick="helpRPS()">RPS Rules</button>
-            <button class="button" onclick="helpRPSLS()">RPSLS Rules</button>
+            <button class="button" type="button" onclick="helpRPS()">RPS Rules</button>
+            <button class="button" type="button"onclick="helpRPSLS()">RPSLS Rules</button>
         </div>
-
-        
         <div>  
             <h2>Random Draw</h2>
             <label>Select game: </label>
             <input type="radio" name="noOpponentGame" value="RPS" checked>RPS
             <input type="radio" name="noOpponentGame" value="RPSLS">RPSLS
             <br><br>
-            <button class="button" onclick="getShot()">Get shot</button>
+            <button class="button" type="button" onclick="getShot()">Get shot</button>
             <br><br>
             <input type="text" id="draw" name="draw" value="" readonly>
         </div>
-        
         <div>
             <h2>Play Computer</h2>
             <label>Select game: </label>
@@ -60,11 +56,9 @@
             <input type="text" id="computerShot" name="computerShot" value="" readonly>
 
             <br><br>
-            <button class="button" onclick="play()">GO!</button>
+            <button class="button" type="button" onclick="play()">GO!</button>
             <br><br>
         </div>
-
-        <button class="button" onclick="reset()">Reset</button>
-        
+        <button class="button" type="button" onclick="reset()">Reset</button>
     </body>
 </html>
